@@ -104,23 +104,27 @@ if(isset($city)){
 //     echo "<a href=".session_destroy().">Logout</a>";
 // }
 ?>
-        <h2><?php echo $data->name; ?> Weather Status</h2>
+<?php   $w='<h2>'. $data->name.' Weather Status</h2>
         <div class="time">
-            <div><?php echo date("l g:i a", $currentTime); ?></div>
-            <div><?php echo date("jS F, Y",$currentTime); ?></div>
-            <div><?php echo ucwords($data->weather[0]->description); ?></div>
+            <div>' .date("l g:i a", $currentTime).' </div>
+            <div>' .date("jS F, Y",$currentTime).' </div>
+            <div>' .ucwords($data->weather[0]->description).' </div>
         </div>
         <div class="weather-forecast">
             <img
-                src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"
-                class="weather-icon" /> <?php echo $data->main->temp_max; ?>&deg;C<span
-                class="min-temperature"><?php echo $data->main->temp_min; ?>&deg;C</span>
+                src="http://openweathermap.org/img/w/'.$data->weather[0]->icon.'.png"
+                class="weather-icon" />' .$data->main->temp_max.' &deg;C<span
+                class="min-temperature">' .$data->main->temp_min.' &deg;C</span>
         </div>
         <div class="time">
-            <div>Humidity: <?php echo $data->main->humidity; ?> %</div>
-            <div>Wind: <?php echo $data->wind->speed; ?> km/h</div>
+            <div>Humidity:' .$data->main->humidity.' %</div>
+            <div>Wind:'   .$data->wind->speed.' km/h</div>
         </div>
-    </div>
+    </div>';
+    echo $w;
+     echo '<a href="mail.php"> mail</a>';
+    $_SESSION['w']=$w;
+    ?>
 
 
 </body>
